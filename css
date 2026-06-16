@@ -1,0 +1,275 @@
+/* ==========================================
+   1. RESET E LAYOUT GERAL DO STREAMLIT
+   ========================================== */
+header[data-testid="stHeader"] { 
+    display: none !important; 
+}
+
+.block-container {
+    padding-top: 0rem !important;
+    padding-bottom: 1rem !important;
+    max-width: 98% !important;
+}
+
+[data-testid="stMainBlockContainer"] { 
+    padding-top: 0rem !important; 
+}
+
+/* ==========================================
+   2. CABEÇALHO E LOGO
+   ========================================== */
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 0;
+    width: 100%;
+    margin-top: 5px;
+}
+
+.logo-img {
+    max-height: 70px;
+    width: auto;
+    object-fit: contain;
+}
+
+.main-subtitle {
+    text-align: center;
+    font-size: 1rem !important;
+    color: #A0AEC0;
+    margin-top: -5px;
+    margin-bottom: 25px;
+}
+
+/* ==========================================
+   3. NAVEGAÇÃO EM ABAS (BLOCO UNIFICADO)
+   ========================================== */
+/* Força o container invisível do Streamlit a liberar os 100% de largura */
+div.element-container:has(div[data-testid="stRadio"]) {
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+div[data-testid="stRadio"] {
+    width: 100% !important;
+    position: relative !important;
+    z-index: 10 !important;
+    margin-bottom: 0px !important;
+}
+
+/* O MASTER BLOCK: Container principal de ponta a ponta */
+div[data-testid="stRadio"] > div[role="radiogroup"] {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    justify-content: flex-start !important; 
+    gap: 4px !important;
+    
+    width: 100% !important;
+    min-width: 100% !important;
+    box-sizing: border-box !important;
+    
+    background-color: var(--secondary-background-color) !important;
+    
+    border-top: 1px solid rgba(128, 128, 128, 0.2) !important;
+    border-left: 1px solid rgba(128, 128, 128, 0.2) !important;
+    border-right: 1px solid rgba(128, 128, 128, 0.2) !important;
+    border-radius: 8px 8px 0 0 !important;
+    
+    border-bottom: 3px solid #1a73e8 !important; /* Linha base azul contínua */
+    padding: 8px 8px 0px 8px !important;
+}
+
+/* Esconde os círculos nativos de seleção */
+div[data-testid="stRadio"] input[type="radio"],
+div[data-testid="stRadio"] div[role="radiogroup"] label > div:first-child { 
+    display: none !important; 
+}
+
+/* Estilo das abas individuais */
+div[data-testid="stRadio"] > div[role="radiogroup"] label {
+    flex: 0 0 auto !important;
+    background-color: rgba(128, 128, 128, 0.08) !important;
+    border: 1px solid rgba(128, 128, 128, 0.2) !important;
+    border-bottom: none !important;
+    padding: 10px 24px !important;
+    border-radius: 6px 6px 0 0 !important;
+    margin: 0 !important;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    outline: none !important; 
+    box-shadow: none !important;
+}
+
+div[data-testid="stRadio"] div[role="radiogroup"] label:focus,
+div[data-testid="stRadio"] div[role="radiogroup"] label:focus-within,
+div[data-testid="stRadio"] div[role="radiogroup"] label:active {
+    outline: none !important;
+    box-shadow: none !important;
+    border-color: rgba(128, 128, 128, 0.2) !important;
+}
+
+/* Texto das abas inativas */
+div[data-testid="stRadio"] label p {
+    font-size: 1.02rem !important;
+    font-weight: 600 !important;
+    color: var(--text-color) !important;
+    opacity: 0.65;
+    margin: 0 !important;
+    white-space: nowrap !important;
+}
+
+div[data-testid="stRadio"] div[role="radiogroup"] label:hover {
+    background-color: rgba(128, 128, 128, 0.18) !important;
+}
+
+/* ESTILO DA ABA ATIVA (Corta a linha azul e une ao banner) */
+div[data-testid="stRadio"] label:has(input:checked) {
+    background-color: var(--background-color) !important; 
+    border-top: 3px solid #1a73e8 !important;
+    border-left: 1px solid rgba(128, 128, 128, 0.2) !important;
+    border-right: 1px solid rgba(128, 128, 128, 0.2) !important;
+    
+    border-bottom: 4px solid var(--background-color) !important; 
+    margin-bottom: -3px !important; /* Puxa a aba para sobrepor a linha azul */
+    position: relative !important;
+    z-index: 12 !important;
+    
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* Texto da aba ativa */
+div[data-testid="stRadio"] label:has(input:checked) p {
+    color: #1a73e8 !important;
+    font-weight: 700 !important;
+    opacity: 1;
+}
+
+/* ==========================================
+   4. CARDS DE KPI (INDICADORES GERENCIAIS)
+   ========================================== */
+.custom-kpi-card {
+    background-color: var(--secondary-background-color) !important;
+    border: 1px solid rgba(128, 128, 128, 0.18) !important;
+    border-radius: 12px !important;
+    padding: 1.15rem !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03) !important;
+    border-left: 5px solid var(--primary-color) !important;
+    margin-bottom: 1rem !important;
+    display: block !important;
+}
+
+.kpi-card-blue { border-left-color: #2563EB !important; }
+.kpi-card-red { border-left-color: #EF4444 !important; }
+.kpi-card-yellow { border-left-color: #F59E0B !important; }
+.kpi-card-green { border-left-color: #16A34A !important; }
+
+.kpi-title {
+    font-size: 0.82rem !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    color: var(--text-color) !important;
+    opacity: 0.65 !important;
+    margin-bottom: 0.3rem !important;
+}
+
+.kpi-value {
+    font-size: 1.9rem !important;
+    font-weight: 900 !important;
+    color: var(--text-color) !important;
+    line-height: 1.1 !important;
+}
+
+.kpi-subtitle {
+    font-size: 0.78rem !important;
+    color: var(--text-color) !important;
+    opacity: 0.55 !important;
+    margin-top: 0.3rem !important;
+}
+
+/* ==========================================
+   5. BANNER DE ORIENTAÇÃO (EFEITO PASTA UNIFICADA)
+   ========================================== */
+.banner-orientacao {
+    background-color: var(--background-color); 
+    padding: 20px 20px 15px 20px; 
+    
+    border-left: 1px solid rgba(128, 128, 128, 0.2);
+    border-right: 1px solid rgba(128, 128, 128, 0.2);
+    border-bottom: 1px solid rgba(128, 128, 128, 0.2);
+    border-radius: 0 0 8px 8px; 
+    
+    /* Puxa o banner para cima e cola com o bloco das abas */
+    margin-top: -1.2rem !important; 
+    margin-bottom: 20px; 
+    
+    width: 100% !important;
+    box-sizing: border-box !important;
+    position: relative;
+    z-index: 1; 
+}
+
+.banner-subtitle {
+    color: var(--text-color);
+    opacity: 0.6;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.banner-title {
+    margin: 4px 0 0 0 !important;
+    color: var(--text-color) !important;
+    font-size: 22px !important;
+    font-weight: 800 !important;
+}
+/* ==========================================================
+   6. REGRAS DE RESPONSIVIDADE (ADAPTAÇÃO PARA NOTEBOOKS)
+   ========================================================== */
+
+/* Quando a tela for menor que 1400px (típico de notebooks) */
+@media (max-width: 1400px) {
+    
+    /* 1. Reduz o tamanho do texto do subtítulo do painel */
+    .main-subtitle {
+        font-size: 0.9rem !important;
+        margin-bottom: 15px;
+    }
+
+    /* 2. Diminui o preenchimento das abas para caberem lado a lado no notebook */
+    div[data-testid="stRadio"] > div[role="radiogroup"] label {
+        padding: 8px 14px !important; /* Reduziu de 24px para 14px */
+    }
+
+    /* 3. Ajusta o tamanho da fonte das abas para não encavalar */
+    div[data-testid="stRadio"] label p {
+        font-size: 0.9rem !important; /* Fonte ligeiramente menor */
+    }
+
+    /* 4. Permite que as abas quebrem linha suavemente se a tela for muito pequena */
+    div[data-testid="stRadio"] > div[role="radiogroup"] {
+        flex-wrap: wrap !important; /* Permite quebra se faltar espaço */
+        gap: 6px !important;
+        padding: 8px 8px 8px 8px !important;
+    }
+
+    /* 5. Ajusta o banner para acompanhar a possível quebra de linha das abas */
+    .banner-orientacao {
+        margin-top: 0rem !important; /* Cola no bloco se houver quebra */
+        border-top: 1px solid rgba(128, 128, 128, 0.2);
+    }
+
+    .banner-title {
+        font-size: 16px !important; /* Diminui o título do banner para não cortar */
+    }
+    
+    /* 6. Encolhe os cards de KPI para não esmagar os gráficos */
+    .kpi-value {
+        font-size: 1.5rem !important;
+    }
+    .kpi-title {
+        font-size: 0.75rem !important;
+    }
+}
